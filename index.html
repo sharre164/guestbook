@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Bootstrap Formulär</title>
+</head>
+<body>
+
+<div class="container mt-5">
+  <h2>Kontaktformulär</h2>
+  <form id="contactForm">
+    <div class="form-group">
+      <label for="exampleInputName">Namn</label>
+      <input type="text" class="form-control" id="exampleInputName" placeholder="Ange ditt namn">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPhone">Telefonnummer</label>
+      <input type="tel" class="form-control" id="exampleInputPhone" placeholder="Ange ditt telefonnummer">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail">E-postadress</label>
+      <input type="email" class="form-control" id="exampleInputEmail" placeholder="Ange din e-postadress">
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlTextarea">Kommentar</label>
+      <textarea class="form-control" id="exampleFormControlTextarea" rows="3" placeholder="Skriv din kommentar här"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPage">Egen sida</label>
+      <input type="text" class="form-control" id="exampleInputPage" placeholder="Ange länk till din egen sida">
+    </div>
+    <button type="submit" class="btn btn-primary">Skicka</button>
+  </form>
+
+  <div class="mt-4">
+    <h3>Tidigare inlägg</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Namn</th>
+          <th>Telefonnummer</th>
+          <th>E-postadress</th>
+          <th>Kommentar</th>
+          <th>Egen sida</th>
+        </tr>
+      </thead>
+      <tbody id="previousPosts">
+        <!-- Tidigare inlägg kommer att visas här -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Bootstrap JS och Popper.js -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  // Funktion för att hantera formulärinskickningar
+  document.getElementById('contactForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    // Hämta värden från formuläret
+    var name = document.getElementById('exampleInputName').value;
+    var phone = document.getElementById('exampleInputPhone').value;
+    var email = document.getElementById('exampleInputEmail').value;
+    var comment = document.getElementById('exampleFormControlTextarea').value;
+    var page = document.getElementById('exampleInputPage').value;
+
+    // Lägg till tidigare inlägg i tabellen
+    var tableBody = document.getElementById('previousPosts');
+    var newRow = tableBody.insertRow(0);
+
+    // Skapa celler för varje kolumn
+    var nameCell = newRow.insertCell(0);
+    var phoneCell = newRow.insertCell(1);
+    var emailCell = newRow.insertCell(2);
+    var commentCell = newRow.insertCell(3);
+    var pageCell = newRow.insertCell(4);
+
+    // Fyll cellerna med formulärdata
+    nameCell.innerHTML = name;
+    phoneCell.innerHTML = phone;
+    emailCell.innerHTML = email;
+    commentCell.innerHTML = comment;
+    pageCell.innerHTML = page;
+
+    // Rensa formulärfälten
+    document.getElementById('exampleInputName').value = '';
+    document.getElementById('exampleInputPhone').value = '';
+    document.getElementById('exampleInputEmail').value = '';
+    document.getElementById('exampleFormControlTextarea').value = '';
+    document.getElementById('exampleInputPage').value = '';
+  });
+</script>
+
+</body>
+</html>
+
